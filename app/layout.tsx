@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +25,61 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ margin: 0, padding: 0, background: '#181f1a', color: '#f3f6f2' }}>
+        <div style={{ display: 'flex', minHeight: '100vh' }}>
+          <nav style={{
+            width: 220,
+            background: '#232d24',
+            padding: '2rem 1rem',
+            borderRight: '1px solid #263326',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+            fontFamily: 'inherit',
+            color: '#b6d7b9',
+            fontWeight: 600,
+            minHeight: '100vh',
+          }}>
+            <Link href="/" style={{ textDecoration: 'none', marginBottom: 20 }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 10,
+                background: 'linear-gradient(135deg, #7ed957 0%, #232d24 100%)',
+                borderRadius: 14,
+                padding: '6px 14px',
+                boxShadow: '0 2px 12px 0 rgba(126,217,87,0.10)',
+                border: '1.5px solid #7ed957',
+                transition: 'box-shadow 0.2s',
+                fontSize: 20,
+                fontWeight: 800,
+                color: '#232d24',
+                letterSpacing: '0.03em',
+                cursor: 'pointer',
+                userSelect: 'none',
+                width: '100%',
+                minHeight: 36,
+                maxWidth: 170
+              }}>
+                <svg width="28" height="28" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="18" cy="18" r="16" stroke="#232d24" strokeWidth="2.2" fill="#b6d7b9" />
+                  <rect x="10" y="17" width="16" height="6" rx="2.5" fill="#7ed957" stroke="#232d24" strokeWidth="1.5"/>
+                  <rect x="13" y="14" width="10" height="4" rx="1.5" fill="#b6d7b9" stroke="#232d24" strokeWidth="1.2"/>
+                  <circle cx="13.5" cy="24" r="2" fill="#232d24" stroke="#b6d7b9" strokeWidth="1"/>
+                  <circle cx="22.5" cy="24" r="2" fill="#232d24" stroke="#b6d7b9" strokeWidth="1"/>
+                  <rect x="16" y="15.5" width="4" height="1.5" rx="0.7" fill="#7ed957" />
+                </svg>
+                <span style={{ fontSize: 20, fontWeight: 800, color: '#232d24', letterSpacing: '0.03em', lineHeight: 1 }}>EcoTraffic</span>
+              </div>
+            </Link>
+            <Link href="/map" style={{ color: '#b6d7b9', textDecoration: 'none', marginBottom: 8 }}>Map</Link>
+            <Link href="/graphs" style={{ color: '#b6d7b9', textDecoration: 'none', marginBottom: 8 }}>Graphs</Link>
+            <Link href="/ecoai" style={{ color: '#b6d7b9', textDecoration: 'none', marginBottom: 8 }}>EcoAI</Link>
+          </nav>
+          <div style={{ flex: 1, padding: '2rem', background: '#181f1a', color: '#f3f6f2' }}>{children}</div>
+        </div>
       </body>
     </html>
   );
